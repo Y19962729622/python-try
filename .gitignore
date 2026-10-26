@@ -1,0 +1,15 @@
+# PyCharm 配置（每个人的电脑不一样，不需要共享）
+.idea/
+
+# Python 运行时产生的缓存
+__pycache__/
+*.pyc
+
+# 虚拟环境
+venv/
+.venv/
+env/
+
+# 系统垃圾文件
+.DS_Store
+Thumbs.db
