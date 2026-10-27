@@ -13,3 +13,11 @@ env/
 # 系统垃圾文件
 .DS_Store
 Thumbs.db
+
+# 数据库文件（本地练习数据，不需要进仓库）
+*.db
+*.sqlite
+*.sqlite3
+
+# 环境变量与密钥
+.env
