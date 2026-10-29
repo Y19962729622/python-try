@@ -21,3 +21,6 @@ Thumbs.db
 
 # 环境变量与密钥
 .env
+
+# WorkBuddy 工作数据（本地记忆/执行记录，不进仓库）
+.workbuddy/

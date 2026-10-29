@@ -105,15 +105,101 @@
 # res=list(map(square,(filter(is_even,nums))))
 # print(res)
 
-# 给定列表 `words = ["hi", "", "python", "", "ok", ""]`
-# 使用 `filter` 去掉里面的空字符串，保留有效字符串。
-# 预期输出：`['hi', 'python', 'ok']`
-def string(x):
-    return x != ""
+#sorted函数
+#题目1
+# nums=[9,2,7,1,5]
+# sortednums=sorted(nums,reverse=True)
+# print(sortednums)
 
+#题目2
+# fruits = ["pear", "watermelon", "apple", "banana"]
+# new_fruits=sorted(fruits,key=len)
+# print(new_fruits)
 
-words = ["hi", "", "python", "", "ok", ""]
-res = list(filter(string, words))
-print(res)  # ['hi', 'python', 'ok']
+# #进阶题
+# stu = [("张三", 82), ("李四", 95), ("王五", 78)]
+# scores=sorted(stu,key=lambda x:x[1])
+# print
 
-# TODO 明天补：reduce（from functools import reduce）
+#关于lambda练习题
+#1、sorted+lambda
+# animal = [("cat", 3), ("dog", 1), ("bird", 2)]
+# nums=sorted(animal,key=lambda x:x[1])
+# print(nums)
+
+#2、map+lambda
+# def triple(x):
+#     return x*3
+# nums = [1, 3, 5, 7]
+# new_nums=list(map(triple,nums))
+# print(new_nums)
+
+# nums = [1, 3, 5, 7]
+# new_nums=list(map(lambda x:x*3,nums))
+# print(new_nums)
+
+#3、filter+lambda
+# nums = [2, 5, 8, 11, 14, 17]
+# new_nums =list(filter(lambda x:x>10,nums))
+# print(new_nums)
+
+#综合题、sorted + map + filter + lambda
+# 需求步骤：
+# 1. 使用 `filter + lambda`：过滤掉名字为空字符串的学生
+# 2. 使用 `map + lambda`：把每个人的分数加 5 分
+# 3. 使用 `sorted + lambda`：按照加分后的分数从高到低排序
+# 4. 最后输出最终列表
+
+# students = [("Tom", 66), ("Jack", 80), ("", 55), ("Rose", 91), ("Mike", 72), ("Lily", 48)]
+# new_list =list(sorted(
+#     map(lambda x:(x[0],x[1]+5),filter(lambda x:x[0]!="",students)),key=lambda x:x[1],reverse=True))
+# print(new_list)
+
+#reduce函数练习题：reduce+lambda
+from functools import reduce
+# nums = [3,4,5,6]
+# result=reduce(lambda x,y:x*y,nums)
+# print(result)
+
+#reduce综合题：filter + map + reduce + lambda
+# 要求：
+# 1. filter：筛选出偶数
+# 2. map：每个偶数 + 1
+# 3. reduce：把处理完的数字全部相乘 写出代码。
+
+# data = [2, 3, 4, 5, 6, 7, 8, 9, 10]
+# answer=reduce(lambda x ,y:x*y,map(lambda x:x+1,filter(lambda x:x%2==0,data)))
+# print(answer)
+
+#lambda判断素数
+# is_prime=lambda x:all(map(lambda f:x%f,range(1,int(x**0.5)+1)))
+# print(is_prime(10))
+
+#偏函数functools
+from functools import partial
+# def mul(a,b):
+#     return a*b
+# mul5 = partial(mul, 5)
+# print(mul5(3))
+
+#题目1
+# 要求：利用 partial 创建偏函数 `sub10`，固定 `a=10`，调用 `sub10(3)` 输出 7。
+from functools import partial
+# def calc(a, b):
+#     return a - b
+# sub10=partial(calc,10)
+# print(sub10(3))
+
+# 题目2
+# 要求：reduce + lambda，计算列表所有数字相乘的结果。
+# nums = [2,4,6,8]
+# result= reduce(lambda x,y:x*y,nums)
+# print(result)
+
+#题目3
+def power(base,exp):
+    return base**exp
+lst=[1,2,3,4]
+cube_func=partial(power,exp=3)
+cube=list(map(cube_func,lst))
+print(cube)

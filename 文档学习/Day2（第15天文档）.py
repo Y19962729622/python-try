@@ -155,15 +155,43 @@
 # power_calc (2,3) → 8
 # power_calc (5,0) → 1
 # power_calc (3,-2) → 打印提示，返回 None
-def power_calc(base:int,exp:int)->int:
-    new_base=1
-    if exp<0:
-        print('暂不支持负指数')
-        return None
-    for _ in range(exp):
-        new_base*=base
-    return new_base
-print(power_calc(3,-2))
+# def power_calc(base:int,exp:int)->int:
+#     new_base=1
+#     if exp<0:
+#         print('暂不支持负指数')
+#         return None
+#     for _ in range(exp):
+#         new_base*=base
+#     return new_base
+# print(power_calc(3,-2))
 
+# Day2:任务补做
+#1、is_prime判断素数bug修正
+# 设计一个判断给定的大于1的正整数是不是质数的函数。质数是只能被1和自身整除的正整数（大于1），
+# 如果一个大于 1 的正整数N是质数，那就意味着在 2 到 N−1之间都没有它的因子。
+# def is_prime(x):
+#     for i in range(2,int(x**0.5)+1):
+#         if x%i==0:
+#             return False
+#     return True
+# print(is_prime(7))
+
+#2、反转字符串
+def solution(s:list[str]):
+        left=0
+        right=len(s)-1
+        while left<right:
+            s[left],s[right]=s[right],s[left]
+            left+=1
+            right-=1
+        return s
+print(solution(["a","1","6","H","b","c"]))
+
+#3、get_stats:for循环的问题
+# def get_stats(lst):
+#     x=max(lst)
+#     y=min(lst)
+#     return x,y
+# print(get_stats([5,2,9,1,7]))
 
 
